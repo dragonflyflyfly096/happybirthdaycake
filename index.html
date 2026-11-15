@@ -45,7 +45,7 @@ html,body{min-height:100%;min-height:100dvh}
   .center-banner{top:5px;font-size:1rem}.cake-assembly{width:min(44vw,330px);height:min(60dvh,300px)}
 }/* Plain surround and proportional desktop enlargement */
 body{background:#fff1f7!important;background-image:none!important}
-.game-viewport{transform-origin:center center}</style>
+.game-viewport{position:fixed;left:50%;top:50%;transform-origin:center center}</style>
 </head>
 <body>
 <main class="game-viewport" id="viewport">
@@ -79,7 +79,7 @@ function burstHeart(){const r=document.querySelector('.heart-btn').getBoundingCl
 let lastTrail=0;document.addEventListener('pointermove',e=>{if(e.pointerType==='touch'||Date.now()-lastTrail<30)return;lastTrail=Date.now();const p=document.createElement('i');p.className='pointer-trail';p.textContent=Math.random()>.55?'✦':'·';p.style.left=e.clientX+'px';p.style.top=e.clientY+'px';p.style.color=['#fff','#b9e9ff','#ffc5df','#d9c5ff'][Math.floor(Math.random()*4)];p.style.setProperty('--sx',(Math.random()*22-11)+'px');p.style.setProperty('--sy',(Math.random()*-25-8)+'px');document.body.appendChild(p);setTimeout(()=>p.remove(),650)});document.addEventListener('pointerdown',e=>burstAt(e.clientX,e.clientY,12));
 function playBirthdayTune(speed=1.25){const AudioCtx=window.AudioContext||window.webkitAudioContext;if(!AudioCtx)return 0;const ctx=new AudioCtx();ctx.resume();const notes=[[67,.3],[67,.3],[69,.6],[67,.6],[72,.6],[71,.9],[67,.3],[67,.3],[69,.6],[67,.6],[74,.6],[72,.9],[67,.3],[67,.3],[79,.6],[76,.6],[72,.6],[71,.6],[69,.9],[77,.3],[77,.3],[76,.6],[72,.6],[74,.6],[72,1.1]];let t=ctx.currentTime+.75;for(const [midi,rawDur] of notes){const dur=rawDur/speed,osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=440*Math.pow(2,(midi-69)/12);gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(.11,t+.025);gain.gain.exponentialRampToValueAtTime(.0001,t+dur*.86);osc.connect(gain);gain.connect(ctx.destination);osc.start(t);osc.stop(t+dur);t+=dur+.04}return Math.max(0,(t-ctx.currentTime)*1000)}
 function startCelebration(){const layer=document.getElementById('celebrationLayer'),colors=['#fff','#b9e9ff','#ffc5df','#d9c5ff'];for(let i=0;i<14;i++){const star=document.createElement('span');star.className='side-sparkle'+(i%2?' right':'');star.textContent=['✦','✧','★'][i%3];star.style.color=colors[i%colors.length];star.style.top=(8+Math.random()*78)+'%';star.style.animationDelay=(Math.random()*1.8)+'s';star.style.fontSize=(12+Math.random()*11)+'px';layer.appendChild(star)}document.getElementById('topBanner').classList.add('birthday-bounce')}
-function fitGameToWindow(){const game=document.querySelector('.game-viewport');if(!game)return;const small=window.matchMedia('(max-width:900px)').matches;const scale=small?1:Math.max(1,Math.min(1.5,(window.innerWidth-32)/800,(window.innerHeight-32)/500));game.style.transform=`scale(${scale})`}
+function fitGameToWindow(){const game=document.querySelector('.game-viewport');if(!game)return;const small=window.matchMedia('(max-width:900px)').matches;const scale=small?1:Math.max(1,Math.min(1.5,(window.innerWidth-32)/800,(window.innerHeight-32)/500));game.style.transform=`translate(-50%,-50%) scale(${scale})`}
 window.addEventListener('resize',fitGameToWindow);fitGameToWindow();</script>
 </body>
 </html>
