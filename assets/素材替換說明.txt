@@ -1,0 +1,8 @@
+雷龍龍蛋糕工坊素材表
+
+蛋糕胚：assets/cake-bases/strawberry.png（草莓）、vanilla.png（原味）、chocolate.png（巧克力）、matcha.png（抹茶）、rainbow.png（彩虹）。
+奶油：assets/creams/vanilla.png（香草）、blueberry.png（藍莓）、ocean.png（海洋）、violet.png（紫羅蘭）、sakura.png（櫻花）。奶油圖會疊在蛋糕胚上。
+裝飾：assets/toppings/pearl-star.png、pearl-heart.png、bow-red.png、bow-purple.png、bow-yellow.png、bow-blue.png、strawberry-whole.png、strawberry-half.png。完成添加後可拖曳；選中物件時以＋／−按鈕調整大小。
+蠟燭：assets/candles/0.png 到 assets/candles/9.png。可逐個拖曳或點選放置，選取後可用＋／−縮放。素材本身包含火焰。
+封面雷龍：assets/characters/dragon.png。完成畫面無動物。
+生日快樂旋律由瀏覽器內建合成，不需另放音檔。
